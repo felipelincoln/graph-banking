@@ -10,6 +10,8 @@ use Mix.Config
 config :graph_banking,
   ecto_repos: [GraphBanking.Repo]
 
+config :graph_banking, GraphBanking.Repo, migration_primary_key: [name: :uuid, type: :binary_id]
+
 # Configures the endpoint
 config :graph_banking, GraphBankingWeb.Endpoint,
   url: [host: "localhost"],
