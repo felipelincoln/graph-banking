@@ -13,6 +13,8 @@ RUN mix do deps.get, deps.compile
 
 # set build-time env variable
 ARG MIX_ENV
+ARG SECRET_KEY_BASE
+ARG DATABASE_URL
 
 # compile and build
 COPY lib lib
