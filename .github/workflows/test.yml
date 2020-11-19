@@ -14,7 +14,7 @@ jobs:
           username: felipelincoln
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           image_name: graph-banking
-          build_extra_args: "--build-arg MIX_ENV=dev"
+          build_extra_args: "--build-arg MIX_ENV=dev --target build"
       
       - run: docker images
         
