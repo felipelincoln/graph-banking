@@ -5,7 +5,7 @@ config :graph_banking, GraphBanking.Repo,
   username: "postgres",
   password: "postgres",
   database: "graph_banking_dev",
-  hostname: "localhost",
+  hostname: "db",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
