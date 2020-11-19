@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+      args:
+        - MIX_ENV=dev
+      cache_from:
+        - felipelincoln/graph-banking:latest
+    image: felipelincoln/graph-banking:latest
+    command: mix phx.server
+    volumes:
+      - .:/app
+      - /app/_build
+      - /app/deps
+    ports:
+      - 4000:4000
+    depends_on:
+      - db
+  db:
+    image: postgres:12
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+volumes:
+  postgres_data:
