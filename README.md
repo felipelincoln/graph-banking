@@ -1,19 +1,5 @@
 # GraphBanking
-
-To start your Phoenix server:
-
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+[![Deploy Status](https://img.shields.io/github/deployments/felipelincoln/graph-banking/graph-banking)](https://graph-banking.herokuapp.com/)
+[![Docs Status](https://img.shields.io/github/deployments/felipelincoln/graph-banking/github-pages)](https://felipelincoln.github.io/graph-banking)
+[![CI Status](https://img.shields.io/github/workflow/status/felipelincoln/graph-banking/CI)](https://github.com/felipelincoln/graph-banking/actions)
+[![Coverage Status](https://coveralls.io/repos/github/felipelincoln/graph-banking/badge.svg?branch=master)](https://coveralls.io/github/felipelincoln/graph-banking?branch=master)
