@@ -1,0 +1,11 @@
+{
+  "skip_files": [
+    "lib/graph_banking.ex",
+    "lib/graph_banking/application.ex",
+    "lib/graph_banking/release.ex",
+    "lib/graph_banking/repo.ex",
+    "lib/graph_banking_web.ex",
+    "lib/graph_banking_web/",
+    "test/"
+  ]
+}
