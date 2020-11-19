@@ -1,0 +1,43 @@
+name: CI
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - uses: whoan/docker-build-with-cache-action@v5
+        name: Build docker image
+        with:
+          username: felipelincoln
+          password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+          image_name: prequest
+          build_extra_args: "--build-arg MIX_ENV=dev --target build"
+      
+      - run: docker images
+        
+      - name: Start docker-compose services
+        run: |
+          docker-compose run --name test_container \
+          -e MIX_ENV=test \
+          -e GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }} \
+          -e GITHUB_SHA=$GITHUB_SHA \
+          -e GITHUB_REF=$GITHUB_REF \
+          -e GITHUB_EVENT_PATH=/home/runner/work/_temp/_github_workflow/event.json \
+          -e GITHUB_EVENT_NAME=$GITHUB_EVENT_NAME \
+          -d web /bin/sh
+      - name: Copy github's event.json to container
+        run: |
+          docker exec test_container mkdir -p /home/runner/work/_temp/_github_workflow/
+          docker cp $GITHUB_EVENT_PATH test_container:/home/runner/work/_temp/_github_workflow/
+      
+      - name: Run mix format
+        run: docker exec test_container mix format --check-formatted --dry-run
+
+      - name: Run mix credo
+        run: docker exec test_container mix credo --strict
+
+      - name: Run mix test
+        run: docker exec test_container mix coveralls.github
