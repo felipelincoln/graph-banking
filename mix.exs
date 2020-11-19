@@ -46,7 +46,9 @@ defmodule GraphBanking.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", runtime: false},
       {:ex_doc, "~> 0.23", runtime: false},
-      {:excoveralls, "~> 0.10"}
+      {:excoveralls, "~> 0.10"},
+      {:absinthe, "~> 1.5"},
+      {:absinthe_plug, "~> 1.5"}
     ]
   end
 
