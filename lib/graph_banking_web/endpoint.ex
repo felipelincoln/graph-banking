@@ -1,4 +1,5 @@
 defmodule GraphBankingWeb.Endpoint do
+  @moduledoc false
   use Phoenix.Endpoint, otp_app: :graph_banking
 
   # The session will be stored in the cookie and signed,

@@ -1,4 +1,5 @@
 defmodule GraphBankingWeb.Router do
+  @moduledoc false
   use GraphBankingWeb, :router
 
   pipeline :api do
