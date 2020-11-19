@@ -1,5 +1,8 @@
 FROM elixir:1.10.4-alpine
 
+# install ci dependencies
+RUN apk add git
+
 WORKDIR /app
 RUN mix do local.hex --force, local.rebar --force
 
