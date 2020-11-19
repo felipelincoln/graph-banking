@@ -10,7 +10,9 @@ defmodule GraphBanking.MixProject do
       compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [coveralls: :test, "coveralls.html": :test]
     ]
   end
 
@@ -41,7 +43,8 @@ defmodule GraphBanking.MixProject do
       {:telemetry_poller, "~> 0.4"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 
