@@ -1,11 +1,10 @@
-FROM elixir:1.10.4-alpine
+FROM elixir:1.10.4-alpine AS build
 
 # install ci dependencies
 RUN apk add git
 
 # setup app
 WORKDIR /app
-ENV MIX_HOME=/root/.mix
 RUN mix do local.hex --force, local.rebar --force
 
 # install mix dependencies
@@ -17,15 +16,23 @@ RUN mix do deps.get, deps.compile
 COPY lib lib
 RUN cp -r _build/dev/ _build/test/
 RUN cp -r _build/dev/ _build/prod/
-RUN rm -rf _build/prod/graph-banking
+RUN rm -rf _build/prod/graph_banking
 
 # set build-time variables
 ARG MIX_ENV
-ARG SECRET_KEY_BASE
-ARG DATABASE_URL
 
 # compile
-RUN mix compile
+RUN mix do compile, release
 
 # run server
 CMD ["mix", "phx.server"]
+
+# production stage
+FROM alpine:3.11 AS production
+
+RUN apk add openssl ncurses-libs
+WORKDIR /app
+ARG MIX_ENV
+COPY --from=build /app/_build/$MIX_ENV/rel/graph_banking ./
+
+CMD ["bin/graph_banking", "start"]

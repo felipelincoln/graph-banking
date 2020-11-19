@@ -4,6 +4,7 @@ services:
   web:
     build:
       context: .
+      target: build
       args:
         - MIX_ENV=dev
       cache_from:
