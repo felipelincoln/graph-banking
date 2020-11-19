@@ -11,6 +11,8 @@ COPY config config
 COPY mix.exs mix.lock ./
 RUN mix do deps.get, deps.compile
 
+ENV MIX_HOME=/root/.mix
+
 # set build-time env variable
 ARG MIX_ENV
 ARG SECRET_KEY_BASE
