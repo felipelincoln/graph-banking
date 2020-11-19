@@ -14,7 +14,7 @@ jobs:
           username: felipelincoln
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
           image_name: prequest
-          build_extra_args: "--build-arg MIX_ENV=dev --target build"
+          build_extra_args: "--build-arg MIX_ENV=dev"
       
       - run: docker images
         
