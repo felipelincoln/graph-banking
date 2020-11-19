@@ -16,6 +16,7 @@ defmodule GraphBankingWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
+  alias Ecto.Adapters.SQL.Sandbox
 
   using do
     quote do
@@ -32,10 +33,10 @@ defmodule GraphBankingWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(GraphBanking.Repo)
+    :ok = Sandbox.checkout(GraphBanking.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(GraphBanking.Repo, {:shared, self()})
+      Sandbox.mode(GraphBanking.Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
