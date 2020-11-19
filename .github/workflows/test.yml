@@ -13,7 +13,7 @@ jobs:
         with:
           username: felipelincoln
           password: ${{ secrets.DOCKER_HUB_PASSWORD }}
-          image_name: prequest
+          image_name: graph-banking
           build_extra_args: "--build-arg MIX_ENV=dev"
       
       - run: docker images
