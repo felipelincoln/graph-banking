@@ -1,5 +1,14 @@
-# GraphBanking
-[![Deploy Status](https://img.shields.io/github/deployments/felipelincoln/graph-banking/graph-banking?label=deploy)](https://graph-banking.herokuapp.com/)
-[![Docs Status](https://img.shields.io/github/deployments/felipelincoln/graph-banking/github-pages?label=docs)](https://felipelincoln.github.io/graph-banking)
-[![CI Status](https://img.shields.io/github/workflow/status/felipelincoln/graph-banking/CI)](https://github.com/felipelincoln/graph-banking/actions)
-[![Coverage Status](https://coveralls.io/repos/github/felipelincoln/graph-banking/badge.svg?branch=master)](https://coveralls.io/github/felipelincoln/graph-banking?branch=master)
+<p align="center">
+  <img width="450px" src="https://imgur.com/WjnPfQB.png">
+</p>
+
+<h1 align="center">GraphBanking API</h1>
+
+<p align="center">
+  <a href="https://graph-banking.herokuapp.com/"><img src="https://img.shields.io/github/deployments/felipelincoln/graph-banking/graph-banking?label=deploy"></a>
+  <a href="https://felipelincoln.github.io/graph-banking"><img src="https://img.shields.io/github/deployments/felipelincoln/graph-banking/github-pages?label=docs"></a>
+  <a href="https://github.com/felipelincoln/graph-banking/actions"><img src="https://img.shields.io/github/workflow/status/felipelincoln/graph-banking/CI"></a>
+  <a href="https://coveralls.io/github/felipelincoln/graph-banking?branch=master"><img src="https://coveralls.io/repos/github/felipelincoln/graph-banking/badge.svg?branch=master"></a>
+</p>
+
+<p align="center">A simple banking app implemented with GraphQL.</p>
