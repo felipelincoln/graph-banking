@@ -4,14 +4,13 @@ FROM elixir:1.10.4-alpine
 RUN apk add git
 
 WORKDIR /app
+ENV MIX_HOME=/root/.mix
 RUN mix do local.hex --force, local.rebar --force
 
 # install mix dependencies
 COPY config config
 COPY mix.exs mix.lock ./
 RUN mix do deps.get, deps.compile
-
-ENV MIX_HOME=/root/.mix
 
 # set build-time env variable
 ARG MIX_ENV
