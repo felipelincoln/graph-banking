@@ -20,3 +20,5 @@ RUN mix compile
 
 # make a copy of dev deps into test deps
 RUN cp -r _build/dev/ _build/test/
+
+CMD ["mix", "phx.server"]
