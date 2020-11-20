@@ -4,7 +4,7 @@ defmodule GraphBanking.Transaction do
   import Ecto.Changeset
 
   @timestamps_opts [inserted_at: :when, updated_at: false, type: :utc_datetime]
-  @primary_key {:uuid, :binary_id, [autogenerate: true]}
+  @primary_key {:uuid, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
   schema "transactions" do

@@ -3,7 +3,7 @@ defmodule GraphBanking.Repo.Migrations.CreateAccounts do
 
   def change do
     create table("accounts") do
-      add :currentBalance, :float
+      add :current_balance, :float
     end
   end
 end
