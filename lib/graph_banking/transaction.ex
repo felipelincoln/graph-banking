@@ -20,6 +20,7 @@ defmodule GraphBanking.Transaction do
     trans
     |> cast(attrs, [:amount, :sender_uuid, :address_uuid])
     |> validate_required([:amount, :sender_uuid, :address_uuid])
+    |> validate_number(:amount, greater_than: 0, message: "is invalid")
     |> validate_uuid(:sender_uuid)
     |> validate_uuid(:address_uuid)
     |> validate_different(:sender_uuid, :address_uuid)
