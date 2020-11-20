@@ -6,7 +6,11 @@ defmodule GraphBankingWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", GraphBankingWeb do
+  scope "/api" do
     pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: GraphBankingWeb.Schema,
+      interface: :simple
   end
 end
