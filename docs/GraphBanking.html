@@ -8,7 +8,7 @@
     <meta name="project" content="graph_banking v0.1.0">
     <title>GraphBanking — graph_banking v0.1.0</title>
     <link rel="stylesheet" href="dist/elixir-9f91ebe876dc01d67920.css" />
-    <script src="dist/sidebar_items-5b36005416.js"></script>
+    <script src="dist/sidebar_items-67968b70c1.js"></script>
       <script src="docs_config.js"></script>
     <script async src="dist/app-60a0c9f10e9e52eae31f.js"></script>
   </head>
@@ -68,11 +68,302 @@ graph_banking      </a>
 
 
         <section id="moduledoc">
-<p>GraphBanking keeps the contexts that define your domain
-and business logic.</p><p>Contexts are also responsible for managing your data, regardless
-if it comes from the database, an external API or others.</p>        </section>
+<p>A public API for managing accounts and making transactions.</p>        </section>
 
+        <section id="summary" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#summary">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+            Summary
+          </h1>
+  <div class="summary-types summary">
+    <h2>
+      <a href="#types">Types</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:account/0">account()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:changeset/0">changeset()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:transaction/0">transaction()</a>
+  </div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#t:uuid/0">uuid()</a>
+  </div>
+</div>
+  </div>
+  <div class="summary-functions summary">
+    <h2>
+      <a href="#functions">Functions</a>
+    </h2>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#get_account!/1">get_account!(uuid)</a>
+  </div>
+    <div class="summary-synopsis"><p>Gets a single account and associated transactions.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#new_account/1">new_account(params \\ %{})</a>
+  </div>
+    <div class="summary-synopsis"><p>Creates an account.</p></div>
+</div>
+<div class="summary-row">
+  <div class="summary-signature">
+    <a href="#transfer_money/3">transfer_money(sender_uuid, address_uuid, amount)</a>
+  </div>
+    <div class="summary-synopsis"><p>Transfers the specified amount between the given accounts.</p></div>
+</div>
+  </div>
+        </section>
 
+        <section id="types" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#types">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Types          </h1>
+          <div class="types-list">
+<section class="detail" id="t:account/0">
+  <div class="detail-header">
+    <a href="#t:account/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">account()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>account() :: %GraphBanking.Account{
+  __meta__: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  current_balance: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  transactions_in: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  transactions_out: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  uuid: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:changeset/0">
+  <div class="detail-header">
+    <a href="#t:changeset/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">changeset()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>changeset() :: %Ecto.Changeset{
+  action: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  changes: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  constraints: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  data: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  empty_values: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  errors: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  filters: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  params: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  prepare: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  repo: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  repo_opts: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  required: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  types: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  valid?: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  validations: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:transaction/0">
+  <div class="detail-header">
+    <a href="#t:transaction/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">transaction()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>transaction() :: %GraphBanking.Transaction{
+  __meta__: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  address: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  address_uuid: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  amount: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  sender: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  sender_uuid: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  uuid: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>(),
+  when: <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">term</a>()
+}</pre>
+      </div>
+
+  </section>
+</section>
+<section class="detail" id="t:uuid/0">
+  <div class="detail-header">
+    <a href="#t:uuid/0" class="detail-link" title="Link to this type">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this type</span>
+    </a>
+    <h1 class="signature">uuid()</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>uuid() :: Ecto.UUID</pre>
+      </div>
+
+  </section>
+</section>
+          </div>
+        </section>
+        <section id="functions" class="details-list">
+          <h1 class="section-heading">
+            <a class="hover-link" href="#functions">
+              <span class="icon-link" aria-hidden="true"></span>
+              <span class="sr-only">Link to this section</span>
+            </a>
+Functions          </h1>
+          <div class="functions-list">
+<section class="detail" id="get_account!/1">
+  <div class="detail-header">
+    <a href="#get_account!/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">get_account!(uuid)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>get_account!(<a href="#t:uuid/0">uuid</a>()) :: <a href="#t:account/0">account</a>()</pre>
+      </div>
+
+<p>Gets a single account and associated transactions.</p><h2 id="get_account!/1-examples" class="section-heading">
+  <a href="#get_account!/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_account!</span><span class="p" data-group-id="8380617143-1">(</span><span class="s">&quot;9b8dfc93-f59d-4de7-af60-57c535501ba9&quot;</span><span class="p" data-group-id="8380617143-1">)</span><span class="w">
+</span><span class="p" data-group-id="8380617143-2">%</span><span class="nc" data-group-id="8380617143-2">Account</span><span class="p" data-group-id="8380617143-2">{</span><span class="w">
+  </span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">
+  </span><span class="ss">transactions_in</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8380617143-3">[</span><span class="p" data-group-id="8380617143-3">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">transactions_out</span><span class="p">:</span><span class="w"> </span><span class="p" data-group-id="8380617143-4">[</span><span class="p" data-group-id="8380617143-4">]</span><span class="p">,</span><span class="w">
+  </span><span class="ss">uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;9b8dfc93-f59d-4de7-af60-57c535501ba9&quot;</span><span class="w">
+</span><span class="p" data-group-id="8380617143-2">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="new_account/1">
+    <span id="new_account/0"></span>
+  <div class="detail-header">
+    <a href="#new_account/1" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">new_account(params \\ %{})</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>new_account(<a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">map</a>()) :: {:ok, <a href="#t:account/0">account</a>()} | {:error, <a href="#t:changeset/0">changeset</a>()}</pre>
+      </div>
+
+<p>Creates an account.</p><h2 id="new_account/1-examples" class="section-heading">
+  <a href="#new_account/1-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">new_account</span><span class="p" data-group-id="3959321932-1">(</span><span class="p" data-group-id="3959321932-2">%{</span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p" data-group-id="3959321932-2">}</span><span class="p" data-group-id="3959321932-1">)</span><span class="w">
+</span><span class="p" data-group-id="3959321932-3">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="3959321932-4">%</span><span class="nc" data-group-id="3959321932-4">Account</span><span class="p" data-group-id="3959321932-4">{</span><span class="w">
+   </span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="mf">10.0</span><span class="p">,</span><span class="w">
+   </span><span class="ss">uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;b92a8690-fb6e-425d-87f5-ea6ae16af83d&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="c1"># ...</span><span class="w">
+ </span><span class="p" data-group-id="3959321932-4">}</span><span class="p" data-group-id="3959321932-3">}</span><span class="w">
+
+</span><span class="gp unselectable">iex&gt; </span><span class="n">new_account</span><span class="p" data-group-id="3959321932-5">(</span><span class="p" data-group-id="3959321932-6">%{</span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="o">-</span><span class="mi">10</span><span class="p" data-group-id="3959321932-6">}</span><span class="p" data-group-id="3959321932-5">)</span><span class="w">
+</span><span class="p" data-group-id="3959321932-7">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="3959321932-8">%</span><span class="nc" data-group-id="3959321932-8">Ecto.Changeset</span><span class="p" data-group-id="3959321932-8">{</span><span class="p" data-group-id="3959321932-8">}</span><span class="p" data-group-id="3959321932-7">}</span></code></pre>  </section>
+</section>
+<section class="detail" id="transfer_money/3">
+  <div class="detail-header">
+    <a href="#transfer_money/3" class="detail-link" title="Link to this function">
+      <span class="icon-link" aria-hidden="true"></span>
+      <span class="sr-only">Link to this function</span>
+    </a>
+    <h1 class="signature">transfer_money(sender_uuid, address_uuid, amount)</h1>
+  </div>
+
+  <section class="docstring">
+      <h2>Specs</h2>
+      <div class="specs">
+          <pre>transfer_money(<a href="#t:uuid/0">uuid</a>(), <a href="#t:uuid/0">uuid</a>(), <a href="https://hexdocs.pm/elixir/typespecs.html#basic-types">float</a>()) ::
+  {:ok, <a href="#t:transaction/0">transaction</a>()} | {:error, <a href="https://hexdocs.pm/elixir/typespecs.html#built-in-types">keyword</a>()}</pre>
+      </div>
+
+<p>Transfers the specified amount between the given accounts.</p><p>In practice, this function creates a transaction  data and updates the accounts.
+If the sender account doesn't have the specified amount, it will rollback the transaction
+and restore the database to the previous state.</p><h2 id="transfer_money/3-examples" class="section-heading">
+  <a href="#transfer_money/3-examples" class="hover-link"><span class="icon-link" aria-hidden="true"></span></a>
+  Examples
+</h2>
+<p>Lets start with a <code class="inline">sender</code> account, with an opening balance of <code class="inline">100.0</code>, and an
+<code class="inline">address</code> account with <code class="inline">0.0</code>.</p><pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="6241561537-1">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">sender</span><span class="p" data-group-id="6241561537-1">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_account</span><span class="p" data-group-id="6241561537-2">(</span><span class="p" data-group-id="6241561537-3">%{</span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="6241561537-3">}</span><span class="p" data-group-id="6241561537-2">)</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="p" data-group-id="6241561537-4">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="p" data-group-id="6241561537-4">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new_account</span><span class="p" data-group-id="6241561537-5">(</span><span class="p" data-group-id="6241561537-6">%{</span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p" data-group-id="6241561537-6">}</span><span class="p" data-group-id="6241561537-5">)</span></code></pre><p>Now we transfer <code class="inline">30.0</code> from <code class="inline">sender</code> to <code class="inline">address</code>.</p><pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">transfer_money</span><span class="p" data-group-id="0743747257-1">(</span><span class="n">sender</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p" data-group-id="0743747257-1">)</span><span class="w">
+</span><span class="c1"># begin []</span><span class="w">
+</span><span class="c1"># INSERT INTO &quot;transactions&quot; ...</span><span class="w">
+</span><span class="c1"># UPDATE &quot;accounts&quot; ...</span><span class="w">
+</span><span class="c1"># UPDATE &quot;accounts&quot; ...</span><span class="w">
+</span><span class="c1"># commit []</span><span class="w">
+</span><span class="p" data-group-id="0743747257-2">{</span><span class="ss">:ok</span><span class="p">,</span><span class="w">
+ </span><span class="p" data-group-id="0743747257-3">%</span><span class="nc" data-group-id="0743747257-3">GraphBanking.Transaction</span><span class="p" data-group-id="0743747257-3">{</span><span class="w">
+   </span><span class="ss">address_uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3c11de5c-da6d-4a90-8d82-8432b1e4061f&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">amount</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span><span class="w">
+   </span><span class="ss">sender_uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;d5cb1878-9fd4-4adc-8a44-2af0035de952&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;d3020427-0b62-495e-b9f1-5d3160d77e84&quot;</span><span class="p">,</span><span class="w">
+   </span><span class="ss">when</span><span class="p">:</span><span class="w"> </span><span class="sx">~U[2020-11-20 18:51:10Z]</span><span class="p">,</span><span class="w">
+   </span><span class="c1"># ...</span><span class="w">
+ </span><span class="p" data-group-id="0743747257-3">}</span><span class="p" data-group-id="0743747257-2">}</span></code></pre><p>If we check the current balance on both accounts we can see that it changed.</p><pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">get_account!</span><span class="p" data-group-id="7107475701-1">(</span><span class="n">sender</span><span class="o">.</span><span class="n">uuid</span><span class="p" data-group-id="7107475701-1">)</span><span class="w">
+</span><span class="p" data-group-id="7107475701-2">%</span><span class="nc" data-group-id="7107475701-2">GraphBanking.Account</span><span class="p" data-group-id="7107475701-2">{</span><span class="w">
+  </span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="mf">70.0</span><span class="p">,</span><span class="w">
+  </span><span class="ss">uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;d5cb1878-9fd4-4adc-8a44-2af0035de952&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+</span><span class="p" data-group-id="7107475701-2">}</span><span class="w">
+</span><span class="gp unselectable">iex&gt; </span><span class="n">get_account!</span><span class="p" data-group-id="7107475701-3">(</span><span class="n">address</span><span class="o">.</span><span class="n">uuid</span><span class="p" data-group-id="7107475701-3">)</span><span class="w">
+</span><span class="p" data-group-id="7107475701-4">%</span><span class="nc" data-group-id="7107475701-4">GraphBanking.Account</span><span class="p" data-group-id="7107475701-4">{</span><span class="w">
+  </span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span><span class="w">
+  </span><span class="ss">uuid</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;3c11de5c-da6d-4a90-8d82-8432b1e4061f&quot;</span><span class="p">,</span><span class="w">
+  </span><span class="c1"># ...</span><span class="w">
+</span><span class="p" data-group-id="7107475701-4">}</span></code></pre><p>We have now <code class="inline">70.0</code> on <code class="inline">sender</code> and <code class="inline">30.0</code> on <code class="inline">address</code>.<br></br>If we try to transfer again, but now the amount of <code class="inline">100.0</code>, we can see that it returns an error
+because <code class="inline">sender</code> has only <code class="inline">70.0</code> available on the account.</p><pre><code class="nohighlight makeup elixir"><span class="gp unselectable">iex&gt; </span><span class="n">transfer_money</span><span class="p" data-group-id="5884993884-1">(</span><span class="n">sender</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span><span class="w"> </span><span class="n">address</span><span class="o">.</span><span class="n">uuid</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p" data-group-id="5884993884-1">)</span><span class="w">
+</span><span class="c1"># begin []</span><span class="w">
+</span><span class="c1"># INSERT INTO &quot;transactions&quot; ...</span><span class="w">
+</span><span class="c1"># UPDATE &quot;accounts&quot; ...</span><span class="w">
+</span><span class="c1"># UPDATE &quot;accounts&quot; ...</span><span class="w">
+</span><span class="c1"># rollback []</span><span class="w">
+</span><span class="p" data-group-id="5884993884-2">{</span><span class="ss">:error</span><span class="p">,</span><span class="w"> </span><span class="p" data-group-id="5884993884-3">[</span><span class="ss">current_balance</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;can&#39;t be negative&quot;</span><span class="p" data-group-id="5884993884-3">]</span><span class="p" data-group-id="5884993884-2">}</span></code></pre><p>The error states that the account can't have a negative balance and this constraint triggers
+the transaction rollback.</p>  </section>
+</section>
+          </div>
+        </section>
       <footer class="footer">
         <p>
           <span class="line">
