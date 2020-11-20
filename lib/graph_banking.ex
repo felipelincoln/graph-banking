@@ -34,13 +34,11 @@ defmodule GraphBanking do
   end
 
   def transfer_money(sender_uuid, address_uuid, amount) do
-    try do
-      Repo.transaction(fn ->
-        operation(sender_uuid, address_uuid, amount)
-      end)
-    rescue
-      error -> error
-    end
+    Repo.transaction(fn ->
+      operation(sender_uuid, address_uuid, amount)
+    end)
+  rescue
+    error -> error
   end
 
   defp operation(sender_uuid, address_uuid, amount) do
