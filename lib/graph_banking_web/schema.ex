@@ -1,6 +1,7 @@
 defmodule GraphBankingWeb.Schema do
   @moduledoc false
   use Absinthe.Schema
+  alias GraphBankingWeb.Resolver
 
   object :transaction do
     field :uuid, :string
@@ -8,6 +9,8 @@ defmodule GraphBankingWeb.Schema do
     field :amount, :float
     field :when, :string, resolve: &shift_timezone/3
   end
+
+  defp shift_timezone(trans, _, _), do: {:ok, DateTime.add(trans.when, -10_800)}
 
   object :account do
     field :uuid, :string
@@ -18,46 +21,21 @@ defmodule GraphBankingWeb.Schema do
   query do
     field :account, :account do
       arg(:uuid, non_null(:string))
-      resolve(&get_account/2)
+      resolve(&Resolver.get_account/2)
     end
   end
 
   mutation do
     field :open_account, :account do
       arg(:current_balance, :float)
-      resolve(&new_account/2)
+      resolve(&Resolver.new_account/2)
     end
 
     field :transfer_money, :transaction do
       arg(:sender, :string)
       arg(:address, :string)
       arg(:amount, :float)
-      resolve(&transfer_money/2)
+      resolve(&Resolver.transfer_money/2)
     end
   end
-
-  defp get_account(%{uuid: uuid}, _info) do
-    {:ok, GraphBanking.get_account!(uuid)}
-  rescue
-    _ -> {:error, "Account #{uuid} doesn't exist"}
-  end
-
-  defp new_account(params, _info) do
-    case GraphBanking.new_account(params) do
-      {:ok, account} ->
-        {:ok, GraphBanking.get_account!(account.uuid)}
-
-      {:error, _changeset} ->
-        {:error, "Argument currentBalance must be a positive float."}
-    end
-  end
-
-  defp transfer_money(%{sender: sender, address: address, amount: amount}, _info) do
-    case GraphBanking.transfer_money(sender, address, amount) do
-      {:error, [{field, message}]} -> {:error, "#{field} #{message}"}
-      transaction -> transaction
-    end
-  end
-
-  defp shift_timezone(trans, _, _), do: {:ok, DateTime.add(trans.when, -10_800)}
 end
