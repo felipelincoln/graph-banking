@@ -17,3 +17,9 @@
 ## Introduction
 This app exposes a few GraphQL endpoints to manipulate a sandbox database that simulates a bank. It is possible to open a new account, fetch account information and make currency transactions between two accounts.  
 > The documentation for these features can be found here. [GraphBanking#summary](https://felipelincoln.github.io/graph-banking/GraphBanking.html#summary)
+
+## Consuming the API.
+* **Using IDEs**: If you are using some GraphQL IDE like Apollo, you can hit the endpoint https://graph-banking.herokuapp.com/ and start querying.
+* **Using the built-in interface**: We provide an interface so you can hit the ground running, it is available at https://graph-banking.herokuapp.com/graphiql/
+
+Since this is deployed to a Heroku free plan, the server may take some time to wakeup :sleeping:.
