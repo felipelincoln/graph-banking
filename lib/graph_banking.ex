@@ -125,7 +125,7 @@ defmodule GraphBanking do
     end)
   rescue
     error ->
-      [{field, {message, _opts}}] = error.changeset.errors
+      [{field, {message, _opts}} | _] = error.changeset.errors
       {:error, [{field, message}]}
   end
 
