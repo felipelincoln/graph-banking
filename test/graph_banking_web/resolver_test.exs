@@ -42,5 +42,8 @@ defmodule GraphBankingWeb.ResolverTest do
 
     params = %{sender: sender.uuid, address: address.uuid, amount: 115.50}
     assert {:error, _err_msg} = Resolver.transfer_money(params, %{})
+
+    params = %{sender: sender.uuid, address: address.uuid, amount: -115.50}
+    assert {:error, _err_msg} = Resolver.transfer_money(params, %{})
   end
 end
