@@ -27,20 +27,35 @@ defmodule GraphBankingWeb.Schema do
       arg(:current_balance, :float)
       resolve(&new_account/2)
     end
+
+    field :transfer_money, :transaction do
+      arg(:sender, :string)
+      arg(:address, :string)
+      arg(:amount, :float)
+      resolve(&transfer_money/2)
+    end
   end
 
   defp get_account(%{uuid: uuid}, _info) do
     {:ok, GraphBanking.get_account!(uuid)}
   rescue
-    _ -> {:error, "Account \"#{uuid}\"doesn't exist"}
+    _ -> {:error, "Account #{uuid} doesn't exist"}
   end
 
   defp new_account(params, _info) do
     case GraphBanking.new_account(params) do
       {:ok, account} ->
         {:ok, GraphBanking.get_account!(account.uuid)}
-      {:error, changeset} ->
-        {:error, "Argument \"currentBalance\" must be a positive float."}
+
+      {:error, _changeset} ->
+        {:error, "Argument currentBalance must be a positive float."}
+    end
+  end
+
+  defp transfer_money(%{sender: sender, address: address, amount: amount}, _info) do
+    case GraphBanking.transfer_money(sender, address, amount) do
+      {:error, [{field, message}]} -> {:error, "#{field} #{message}"}
+      transaction -> transaction
     end
   end
 
