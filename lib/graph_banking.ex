@@ -125,6 +125,7 @@ defmodule GraphBanking do
     end)
   rescue
     error ->
+      # get only the first error
       [{field, {message, _opts}} | _] = error.changeset.errors
       {:error, [{field, message}]}
   end

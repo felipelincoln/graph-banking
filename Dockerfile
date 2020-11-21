@@ -13,6 +13,7 @@ COPY mix.exs mix.lock ./
 RUN mix do deps.get, deps.compile
 
 # copy builds to avoid recompiling
+COPY priv priv
 COPY lib lib
 RUN cp -r _build/dev/ _build/test/
 RUN cp -r _build/dev/ _build/prod/

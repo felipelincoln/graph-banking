@@ -12,5 +12,7 @@ defmodule GraphBankingWeb.Router do
     forward "/graphiql", Absinthe.Plug.GraphiQL,
       schema: GraphBankingWeb.Schema,
       interface: :simple
+
+    forward "/", Absinthe.Plug, schema: GraphBankingWeb.Schema
   end
 end
