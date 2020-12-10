@@ -40,4 +40,4 @@ jobs:
         run: docker exec test_container mix credo --strict
 
       - name: Run mix test
-        run: docker exec test_container mix coveralls.github
+        run: docker exec test_container mix coveralls.github --verbose
