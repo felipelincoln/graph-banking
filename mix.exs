@@ -12,6 +12,7 @@ defmodule GraphBanking.MixProject do
       aliases: aliases(),
       deps: deps(),
       docs: [output: "docs", extras: [".github/CONTRIBUTING.md"]],
+      test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [coveralls: :test, ci: :test]
     ]
   end
