@@ -33,7 +33,7 @@ jobs:
           docker exec test_container mkdir -p /home/runner/work/_temp/_github_workflow/
           docker cp $GITHUB_EVENT_PATH test_container:/home/runner/work/_temp/_github_workflow/
       
-      - run: ls -a
+      - run: docker exec test_container ls -a
         
       - name: Run mix format
         run: docker exec test_container mix format --check-formatted --dry-run
