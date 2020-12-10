@@ -42,7 +42,7 @@ jobs:
         run: docker exec test_container mix credo --strict
       
       - name: Run mix coveralls.post
-        run: docker exec -e MIX_ENV=test test_container mix coveralls.post --umbrella --verbose --token va3RJl4STxuXt32ffV6aCQDl4be2Tm0XC --branch ${GITHUB_REF#refs/heads/} --name "github" --committer $GITHUB_ACTOR --message "${{ github.event.head_commit.message }}" --sha $GITHUB_SHA
+        run: docker exec -e MIX_ENV=test test_container mix coveralls.post --verbose --token va3RJl4STxuXt32ffV6aCQDl4be2Tm0XC --branch ${GITHUB_REF#refs/heads/} --name "github" --committer $GITHUB_ACTOR --message "${{ github.event.head_commit.message }}" --sha $GITHUB_SHA
 
              
  
