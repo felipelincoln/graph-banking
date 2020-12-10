@@ -43,7 +43,7 @@ jobs:
       
       - name: Run mix coveralls.post
         run: |
-          docker exec test_container mix coveralls.post --verbose \
+          docker exec test_container MIX_ENV=test mix coveralls.post --verbose \
           --token "va3RJl4STxuXt32ffV6aCQDl4be2Tm0XC" \
           --branch $GITHUB_REF \
           --name "GitHub Actions" \
