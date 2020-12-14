@@ -27,6 +27,8 @@ defmodule GraphBanking.Transaction do
     |> assoc_constraint(:sender)
     |> assoc_constraint(:address)
   end
+  
+  def test, do: :test
 
   defp validate_different(changeset, field1, field2) do
     validate_change(changeset, field1, fn _, value1 ->
