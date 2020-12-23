@@ -17,6 +17,8 @@ jobs:
           build_extra_args: "--build-arg MIX_ENV=dev --target build"
       
       - run: docker images
+      
+      - run: docker --version
         
       - name: Start docker-compose services
         run: |
