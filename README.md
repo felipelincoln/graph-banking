@@ -13,7 +13,6 @@
 
 <p align="center">A simple banking app implemented with GraphQL.</p>
 
-
 ## Introduction
 
 This app exposes a few GraphQL endpoints to manipulate a sandbox database that simulates a bank. It is possible to open a new account, fetch account information and make currency transactions between two accounts.  
