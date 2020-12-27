@@ -66,6 +66,7 @@ it is possible to retrieve the current balance.
     }
   }
 }
+
 ```
 Having two `uuid` it is possible to transfer money between them using the `transferMoney` mutation.
 ```graphql
