@@ -27,6 +27,7 @@ Since this is deployed to a Heroku free plan, the server may take some time to w
 ## Usage Examples
 Creating an account using the `openAccount` mutation
 
+
 ```graphql
 mutation {
   openAccount(currentBalance: 45.5){
