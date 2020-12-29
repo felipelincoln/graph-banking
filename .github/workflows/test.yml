@@ -49,6 +49,6 @@ jobs:
        
       - name: push image to heroku registry
         run: |
-          HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku container:push web --app graph-banking
+          HEROKU_API_KEY=${{ secrets.HEROKU_API_KEY }} heroku container:push web --app graph-banking --arg MIX_ENV=prod
  
              
