@@ -11,6 +11,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-    - run: echo "${{ github.event.head_commit.message }}"
-      
-    - run: echo "${{ github.event.after }}"
+    - run: echo ${GITHUB_REF#refs/heads/}
